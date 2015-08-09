@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>alexey.oleynick</groupId>
+    <artifactId>gallery</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>swf</packaging>
+
+
+    <properties>
+        <flexmojos.version>5.0-beta</flexmojos.version>
+        <flex.framework.version>4.6.b.23201</flex.framework.version>
+    </properties>
+
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <!--<testSourceDirectory>test</testSourceDirectory>-->
+        <plugins>
+            <plugin>
+                <groupId>net.flexmojos.oss</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <sourceFile>alexey/oleynick/Gallery.as</sourceFile>
+                    <storepass/>
+                    <optimize>true</optimize>
+                    <compilerWarnings>
+                        <warn-no-constructor>false</warn-no-constructor>
+                    </compilerWarnings>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.adobe.flex</groupId>
+                        <artifactId>compiler</artifactId>
+                        <version>${flex.framework.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.framework.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flexunit</groupId>
+            <artifactId>flexunit</artifactId>
+            <version>4.1.0</version>
+            <classifier>as3</classifier>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>hamcrest-as3</groupId>
+            <artifactId>hamcrest-as3</artifactId>
+            <version>1.1.0</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>local</groupId>
+            <artifactId>signals-as3</artifactId>
+            <version>0.5</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>local</groupId>
+            <artifactId>mockolate</artifactId>
+            <version>0.12.4</version>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>local</groupId>
+            <artifactId>robotlegs</artifactId>
+            <version>1.5.2</version>
+            <type>swc</type>
+        </dependency>
+
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>flex-mojos-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+        </repository>
+
+        <repository>
+            <id>sonatype-repository</id>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+        </repository>
+
+        <repository>
+            <id>flexunit</id>
+            <url>https://repository.sonatype.org/service/local/repositories/atlassian/content/</url>
+        </repository>
+
+        <repository>
+            <id>project_lib</id>
+            <name>Repository in project's lib dir</name>
+            <layout>default</layout>
+            <url>file://${project.basedir}\lib</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>rso</id>
+            <url>https://repository.sonatype.org/service/local/repositories/atlassian/content/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
