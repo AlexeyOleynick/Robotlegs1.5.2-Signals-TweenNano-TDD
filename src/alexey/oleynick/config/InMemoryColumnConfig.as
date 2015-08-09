@@ -6,11 +6,11 @@ public class InMemoryColumnConfig implements IImageColumnConfig {
     }
 
     public function get columnCount():int {
-        return 10;
+        return 8;
     }
 
     public function get columnWidthInPixels():int {
-        return 80;
+        return 800/columnCount;
     }
 }
 }
